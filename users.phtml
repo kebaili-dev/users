@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des utilisateurs</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1 class="text-center">Liste des utilisateurs</h1>
+    
+    <main class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Date de naissance</th>
+                    <th>Âge</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $index => $user): ?>
+                    <!---------------- On rajoute ID dans url : index correspont a la clé de notre tableau----------------------------------------->
+                    <tr> 
+                        <td><a href="user_detail.php?id=<?= $index + 1 ?>"><?= $index + 1 ?></a></td>
+                        <td><?= $user['firstname'] ?></td>
+                        <td><?= $user['lastname'] ?></td>
+                        <td><?= date_create($user['birthdate'])->format('d/m/Y') ?></td>
+                        <td><?= getAge($user['birthdate']) ?> ans</td>
+                        <td><?= $user['email'] ?></td>
+                        <td><?= $user['phone'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </main>
+    
+</body>
+</html>

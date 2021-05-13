@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de l'utilisateur</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1 class="text-center">Prénom NOM utilisateur</h1>
+    <nav>
+        <a href="user_index.php">Retour sur la liste des utilisateurs</a>
+    </nav>
+    <main class="container">
+        <dl>
+            <dt>Numéro</dt>
+            <dd><?= $_GET['id'] ?></dd>
+            <dt>Prénom</dt>
+            <dd><?= $user['firstname'] ?></dd>
+            <dt>Nom</dt>
+            <dd><?= $user['lastname'] ?></dd>
+            <dt>Date de naissance</dt>
+            <dd><?= date_create($user['birthdate'])->format('d/m/Y') ?></dd>
+            <dt>Âge</dt>
+            <dd><?= getAge($user['birthdate']) ?> ans</dd>
+            <dt>Email</dt>
+            <dd><?= $user['email'] ?></dd>
+            <dt>Téléphone</dt>
+            <dd><?= $user['phone'] ?></dd>
+        </dl>
+    </main>
+</body>
+</html>
